@@ -1,8 +1,7 @@
-import { now } from "moment";
+// import * as test from "./importable";
+///<reference path="./importable.ts" />;
 
 export class Example {
-
-	private isNow = now();
 
 	constructor() {
 		//

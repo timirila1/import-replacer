@@ -7,16 +7,20 @@ var importReplacer = function() {
 
 		fs.readFile(file.path, function(err, data) {
 			if (err) {
-				cb(null, file);
+				cb(new Error(null));
 			} else {
-				console.log(data.toString('utf-8'));
+				var fileString = data.toString();
+				var replacer = function(src, varName, path) {
+					return '///<reference path="' + path + '"> public ' + varName + ';\n';
+				}
 
-				// Here we go to write our replacement code
-
-			}
-		})
-
+				var fileString = fileString.replace(/import \* as (\w+) from [\'\"](.+)[\'\"]/ig, replacer);
+				file.buffer = new Buffer(fileString)
 		
+				cb(null, file);
+			}
+		});
+
 	});
 
 }

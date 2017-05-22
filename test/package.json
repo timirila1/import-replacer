@@ -10,6 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "lodash": "^4.17.4"
+    "gulp-concat": "^2.6.1",
+    "gulp-typescript": "^3.1.6",
+    "typescript": "^2.3.2"
   }
 }
